@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/JSXTransformer.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <div id="example1"></div>
+    <script type="text/jsx">
+// var LikeButton = React.createClass({
+//   getInitialState: function() {
+//     return {liked: false};
+//   },
+//   handleClick: function(event) {
+//     this.setState({liked: !this.state.liked});
+//   },
+//   render: function() {
+//     var text = this.state.liked ? 'like' : 'haven\'t liked';
+//     return (
+//       <p onClick={this.handleClick}>
+//         You {text} this. Click to toggle.
+//       </p>
+//     );
+//   }
+// });
+//
+// React.render(
+//   <LikeButton />,
+//   document.getElementById('example')
+// );
+
+var DisableButton = React.createClass({
+
+  getInitialState:function(){
+    return {disable:false};
+  },
+
+  handleClick:function(){
+    this.setState({disable:!this.state.disable});
+  },
+
+  render:function(){
+
+    var disable_val = this.state.disable ? "false" :"true";
+
+    // return <button disable={disable_val} onClick={this.handleState}>点我</button>;
+    return (
+      <div>
+        <p >
+          You {disable_val} this. Click to toggle.
+        </p>
+
+        <button disabled={disable_val} onClick={this.handleClick}>click Me</button>
+      </div>
+    );
+  }
+
+});
+
+React.render(
+  <DisableButton />,
+  document.getElementById("example1")
+)
+
+
+    </script>
+  </body>
+</html>

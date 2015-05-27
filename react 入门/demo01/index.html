@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/JSXTransformer.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <div id="example1"></div>
+    <script type="text/jsx">
+
+
+      React.render(
+        <h1>Hello, world!</h1>,
+        document.getElementById('example')
+      );
+      var val = [
+        "tomcat",
+        "yangfei"
+      ]
+      React.render(
+        <h1>
+          {
+            val.map(function(v){
+              return <p>{v}</p>
+            })
+          }
+        </h1>,
+        document.getElementById('example1')
+      );
+    </script>
+  </body>
+</html>

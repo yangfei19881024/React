@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/JSXTransformer.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/jsx">
+    
+    var val = "clickme";
+
+    var MyComponent = React.createClass({
+      handleClick: function() {
+        var value = React.findDOMNode(this.refs.myTextInput).value;
+        alert(value);
+      },
+      changeText:function(){
+        React.findDOMNode(this.refs.para).innerHTML = "change HelloWorld";
+      },
+      render: function() {
+        return (
+          <div>
+            <input type="text" ref="myTextInput" />
+            <input type="button" value="Focus the text input" onClick={this.handleClick} />
+            <p ref="para" onClick={this.changeText}>
+              hello world
+            </p>
+          </div>
+        );
+      }
+    });
+
+    React.render(
+      <MyComponent />,
+      document.getElementById('example')
+    );
+    </script>
+  </body>
+</html>
