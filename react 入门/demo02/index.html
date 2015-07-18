@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+      *{
+        margin:0px;
+        padding:0px;
+      }
+      h1{
+        color:red;
+      }
+    </style>
     <script src="../build/react.js"></script>
     <script src="../build/JSXTransformer.js"></script>
   </head>
@@ -21,16 +30,30 @@
       //   document.getElementById('example')
       // );
 
-      var people = ['yang','gao','tian'];
+      var people = ['yang','liu','tian'];
+
+      var people = {
+        name:"yangfei",
+        age:27,
+        sex:"female"
+      }
+
+      var People = React.createClass({
+        render:function(){
+
+          return (
+            <div >
+              <h1>Hi,{this.props.name}</h1>
+              <h2>im {this.props.age}</h2>
+            </div>
+
+          )
+
+        }
+      })
 
       React.render(
-        <div>
-          {
-            people.map(function(p){
-                return <h1>{p}</h1>
-            })
-          }
-        </div>,
+        <People {...people} />,
         document.getElementById("example")
       );
     </script>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="../build/react.js"></script>
+    <script src="../build/JSXTransformer.js"></script>
+    <style>
+      *{
+        padding:0px;
+        margin: 0px;
+      }
+      .title{
+        background: red;
+        color:#FFF;
+        padding:10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="example1"></div>
+
+    <script type="text/jsx">
+
+      var Select = React.createClass({
+        getInitialState:function(){
+
+          return {
+            names:["yangfei","gaoya","jackson"]
+          }
+
+        },
+        render:function(){
+          return (
+            <select onChange={this.props.handleSelects}>
+                {
+                  this.state.names.map(function(item){
+                    return <option>{item}</option>
+                  })
+                }
+            </select>
+          )
+        }
+      });
+
+      var Content = React.createClass({
+
+        render:function(){
+          return(
+            <textarea onChange={this.props.handleContents} name="name" rows="8" cols="40" placeholder="Please input your content"></textarea>
+          )
+        }
+
+      });
+
+      var Comment = React.createClass({
+        getInitialState:function(){
+          return{
+            uname:"",
+            content:""
+          }
+        },
+        handleSubmit:function(event){
+          event.preventDefault();
+          console.log(this.state);
+        },
+        handleSelect:function(event){
+          this.setState({
+            uname:event.target.value
+          })
+        },
+        handleContent:function(event){
+          this.setState({
+            content:event.target.value
+          })
+        },
+        render:function(){
+          return(
+            <div>
+              <form onSubmit={this.handleSubmit}>
+                  <Select handleSelects={this.handleSelect}/>
+                  <Content handleContents={this.handleContent}/>
+                  <div class="">
+                    <input type="submit" name="name" value="提交数据" />
+                  </div>
+              </form>
+            </div>
+          )
+        }
+
+      });
+
+      React.render(
+        <Comment />,
+        document.getElementById("example1")
+      )
+
+
+    </script>
+  </body>
+</html>

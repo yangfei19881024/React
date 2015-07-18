@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="../build/react.js"></script>
+    <script src="../build/JSXTransformer.js"></script>
+    <style>
+      *{
+        padding:0px;
+        margin: 0px;
+      }
+      .title{
+        background: red;
+        color:#FFF;
+        padding:10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="example1"></div>
+
+    <script type="text/jsx">
+
+        var Input = React.createClass({
+          getInitialState:function(){
+            return {txt:""};
+          },
+          handleChange:function(){
+            var txt = React.findDOMNode(this.refs.input_val).value;
+            this.setState({txt:txt});
+          },
+          render:function(){
+             
+            return  <input type='text' defaultValue="hello" onChange={this.handleChange} ref='input_val'/>
+
+
+          }
+
+        });
+
+        React.render(
+          <Input name="input_ele" />,
+          document.getElementById("example1")
+        )
+
+
+    </script>
+  </body>
+</html>
